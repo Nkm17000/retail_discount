@@ -13,6 +13,8 @@ On a retail website, the following discounts apply:
 - The percentage-based discounts do not apply to groceries.
 - A user can get only one of the percentage-based discounts on a bill.
 
+**Note: I am considering ($100 on the bill, there would be a $5 discount) is not a percentage base discount.**
+
 ## Features
 - Calculate the net payable amount for a bill based on user and bill information.
 - Apply appropriate discounts based on user type and bill details.
@@ -25,12 +27,21 @@ To run the Retail Store Discounts project locally, follow these steps:
 2. Navigate to the project directory: `cd retail-store-discounts`
 3. Build the project: `gradle clean build`
 4. Run the application: `gradle bootRun`
+5. open this in browser http://localhost:8080/swagger-ui/index.html
+
+
+### If you wanted to run executable jar 
+1. I have kept executable jar in sampleOutputResult Folder
+2. go to executable jar path in cmd
+3. type command:  `java -jar demo-0.0.1-SNAPSHOT.jar java -jar --server.port=8080`
+4. open this in browser http://localhost:8080/swagger-ui/index.html
 
 ### code coverage
 1. go to build/jococoHtml/index.html
 2. open this file in browser
 3. check your code coverage here
-
+4. [Link to Jacoco HTML Report](sampleOutputResults/jacocoHtml/index.html)
+   
 ### code lint
 1. go to build/checkstyle/main.html
 2. check if you have any lint issue
@@ -70,15 +81,15 @@ Provide a JSON payload containing the user and bill details, and the application
 ```
 ### Sample Response
 {
-  "netPayableAmount": 650.0
+  "netPayableAmount": 1615.0
 }
 
 ### Technologies Used
 - Java 17
 - Spring Boot
-- Maven
+- gradle
 - Swagger for API documentation
-- Java Util Logging for logging
+- Slf4j for logs
 
 # Running SonarQube Analysis
 ## Prerequisites
@@ -88,3 +99,15 @@ Provide a JSON payload containing the user and bill details, and the application
 - set this token id at gradle sonar properties like sonar.projectKey and sonar.token
 ### Run the following Gradle command to execute SonarQube analysis:
 - Run the application: `gradle sonarqube`
+  ![output1](sampleOutputResults/sonar/Screenshot%202024-02-09%20125829.png)
+  ![output2](sampleOutputResults/sonar/Screenshot%202024-02-09%20125842.png)
+  ![output3](sampleOutputResults/sonar/Screenshot%202024-02-09%20125926.png)
+  ![output4](sampleOutputResults/sonar/Screenshot%202024-02-09%20130103.png)
+
+
+# high level UML Diagram
+![HLD](sampleOutputResults/hld.jpeg)
+1. The User class represents a user of the store with properties userType and registrationDate.
+2. The UserType enum represents the different types of users, each with a corresponding discount percentage.
+3. Each user type (EMPLOYEE, AFFILIATE, CUSTOMER) has its own discount percentage, which can be accessed using the getDiscountPercentage() method.
+4. The User class has getters for userType and registrationDate.

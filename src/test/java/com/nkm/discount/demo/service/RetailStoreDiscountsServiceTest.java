@@ -29,16 +29,8 @@ class RetailStoreDiscountsServiceTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        when(environment.getProperty("discount.employee")).thenReturn("0.3");
-        when(environment.getProperty("discount.affiliate")).thenReturn("0.1");
-        when(environment.getProperty("discount.customer")).thenReturn("0.05");
         when(environment.getProperty("discount.for100")).thenReturn("5");
-        // Set properties using ReflectionTestUtils
-        ReflectionTestUtils.setField(retailStoreDiscountsService, "percentageDiscountEmployee", 0.3);
-        ReflectionTestUtils.setField(retailStoreDiscountsService, "percentageDiscountAffiliate", 0.1);
-        ReflectionTestUtils.setField(retailStoreDiscountsService, "percentageDiscountCustomer", 0.05);
         ReflectionTestUtils.setField(retailStoreDiscountsService, "discountFor100", 5.0);
-
     }
 
     @Test

@@ -15,16 +15,6 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class RetailStoreDiscountsService {
-
-    @Value("${discount.employee}")
-    private double percentageDiscountEmployee;
-
-    @Value("${discount.affiliate}")
-    private double percentageDiscountAffiliate;
-
-    @Value("${discount.customer}")
-    private double percentageDiscountCustomer;
-
     @Value("${discount.for100}")
     private double discountFor100;
 
@@ -41,21 +31,22 @@ public class RetailStoreDiscountsService {
     }
 
     private double getPayableAmount(User user, Bill bill) {
-        double discount = 0;
-        if (!bill.isGrocery()) {
-            if (user.getUserType() == UserType.EMPLOYEE) {
-                discount = percentageDiscountEmployee;
-            } else if (user.getUserType() == UserType.AFFILIATE) {
-                discount = percentageDiscountAffiliate;
-            } else if (user.getUserType() == UserType.CUSTOMER
-                    && user.getRegistrationDate().isBefore(LocalDate.now().minusYears(2))) {
-                discount = percentageDiscountCustomer;
-            }
-
-        }
-
+        double discount = calculateDiscount(user, bill);
         double totalDiscount = calculateTotalDiscount(bill.getTotalAmount(), discount);
         return bill.getTotalAmount() - totalDiscount;
+    }
+
+    private double calculateDiscount(User user, Bill bill) {
+        UserType userType = user.getUserType();
+        if (bill.isGrocery() || (userType == UserType.CUSTOMER && !isCustomerOverTwoYears(user))) {
+            return 0.0;
+        }
+        return  user.getUserType().getDiscountPercentage();
+    }
+
+    private boolean isCustomerOverTwoYears(User user) {
+        return user.getUserType() == UserType.CUSTOMER &&
+                user.getRegistrationDate().isBefore(LocalDate.now().minusYears(2));
     }
 
     private double calculateTotalDiscount(double totalAmount, double discountPercentage) {
