@@ -1,0 +1,34 @@
+
+@startuml
+
+package "HLD" {
+    class User {
+        - userId: int
+        - userType: UserType
+        - registrationDate: LocalDate
+    }
+        enum UserType {
+            EMPLOYEE(0.30)
+            AFFILIATE(0.10)
+            CUSTOMER(0.05)
+            DEFAULT(0.0)
+            - double discountPercentage
+        }
+
+    class Bill {
+        - billId: int
+        - totalAmount: double
+        - isGrocery: boolean
+    }
+
+    class CalculateNetPayableAmountRequest {
+        - user: User
+        - bills: List<Bill>
+    }
+}
+
+CalculateNetPayableAmountRequest --|> User
+CalculateNetPayableAmountRequest --|> Bill
+User --|> userType
+
+@enduml

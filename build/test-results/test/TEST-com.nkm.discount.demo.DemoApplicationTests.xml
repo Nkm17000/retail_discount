@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.nkm.discount.demo.DemoApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-02-09T09:20:16" hostname="IN-86RM2J3" time="1.736">
+<testsuite name="com.nkm.discount.demo.DemoApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-02-09T13:56:19" hostname="IN-86RM2J3" time="1.124">
   <properties/>
-  <testcase name="contextLoads()" classname="com.nkm.discount.demo.DemoApplicationTests" time="1.736"/>
-  <system-out><![CDATA[14:50:09.251 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.nkm.discount.demo.DemoApplicationTests]: DemoApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-14:50:09.888 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.nkm.discount.demo.DemoApplication for test class com.nkm.discount.demo.DemoApplicationTests
+  <testcase name="contextLoads()" classname="com.nkm.discount.demo.DemoApplicationTests" time="1.124"/>
+  <system-out><![CDATA[19:26:14.483 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.nkm.discount.demo.DemoApplicationTests]: DemoApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:26:14.794 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.nkm.discount.demo.DemoApplication for test class com.nkm.discount.demo.DemoApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -13,9 +13,9 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.2)
 
-2024-02-09T14:50:11.979+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.discount.demo.DemoApplicationTests   : Starting DemoApplicationTests using Java 17.0.9 with PID 376 (started by nitinkumar14 in C:\Users\nitinkumar14\OneDrive - Nagarro\Desktop\interview-preparation\aws-elasticsearch\referances\dubai_muncipal\demo (13)\demo)
-2024-02-09T14:50:11.983+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.discount.demo.DemoApplicationTests   : No active profile set, falling back to 1 default profile: "default"
-2024-02-09T14:50:16.187+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.discount.demo.DemoApplicationTests   : Started DemoApplicationTests in 5.442 seconds (process running for 12.364)
+2024-02-09T19:26:16.025+05:30  INFO 15840 --- [retail_discount] [    Test worker] c.n.discount.demo.DemoApplicationTests   : Starting DemoApplicationTests using Java 17.0.9 with PID 15840 (started by nitinkumar14 in C:\Users\nitinkumar14\OneDrive - Nagarro\Desktop\interview-preparation\aws-elasticsearch\referances\dubai_muncipal\demo (13)\demo)
+2024-02-09T19:26:16.028+05:30  INFO 15840 --- [retail_discount] [    Test worker] c.n.discount.demo.DemoApplicationTests   : No active profile set, falling back to 1 default profile: "default"
+2024-02-09T19:26:19.217+05:30  INFO 15840 --- [retail_discount] [    Test worker] c.n.discount.demo.DemoApplicationTests   : Started DemoApplicationTests in 3.907 seconds (process running for 9.016)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
