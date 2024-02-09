@@ -23,8 +23,8 @@ On a retail website, the following discounts apply:
 ## Getting Started
 To run the Retail Store Discounts project locally, follow these steps:
 
-1. Clone the repository: `git clone <repository_url>`
-2. Navigate to the project directory: `cd retail-store-discounts`
+1. Clone the repository: `git clone https://github.com/Nkm17000/retail_discount.git`
+2. Navigate to the project directory: `cd retail_discount`
 3. Build the project: `gradle clean build`
 4. Run the application: `gradle bootRun`
 5. open this in browser http://localhost:8080/swagger-ui/index.html
