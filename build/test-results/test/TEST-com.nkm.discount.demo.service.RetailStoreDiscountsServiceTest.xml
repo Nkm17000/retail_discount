@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.nkm.discount.demo.service.RetailStoreDiscountsServiceTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-02-09T09:20:20" hostname="IN-86RM2J3" time="0.394">
+  <properties/>
+  <testcase name="testCalculateNetPayableAmount_CustomerOver2Years()" classname="com.nkm.discount.demo.service.RetailStoreDiscountsServiceTest" time="0.354"/>
+  <testcase name="testCalculateNetPayableAmount_Affiliate()" classname="com.nkm.discount.demo.service.RetailStoreDiscountsServiceTest" time="0.007"/>
+  <testcase name="testCalculateNetPayableAmount_Customer()" classname="com.nkm.discount.demo.service.RetailStoreDiscountsServiceTest" time="0.006"/>
+  <testcase name="testCalculateNetPayableAmount_Groceries()" classname="com.nkm.discount.demo.service.RetailStoreDiscountsServiceTest" time="0.008"/>
+  <testcase name="testCalculateNetPayableAmount_Employee()" classname="com.nkm.discount.demo.service.RetailStoreDiscountsServiceTest" time="0.005"/>
+  <testcase name="testCalculateNetPayableAmount_NoDiscount()" classname="com.nkm.discount.demo.service.RetailStoreDiscountsServiceTest" time="0.006"/>
+  <system-out><![CDATA[2024-02-09T14:50:20.463+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.d.d.s.RetailStoreDiscountsService    : Calculating net payable amount for user: User(userId=1, userType=CUSTOMER, registrationDate=2021-02-09), bill: [Bill(billId=1, totalAmount=1000.0, isGrocery=false)]
+2024-02-09T14:50:20.481+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.d.d.s.RetailStoreDiscountsService    : Net payable amount calculated: 905.0
+2024-02-09T14:50:20.490+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.d.d.s.RetailStoreDiscountsService    : Calculating net payable amount for user: User(userId=1, userType=AFFILIATE, registrationDate=2024-02-09), bill: [Bill(billId=1, totalAmount=1000.0, isGrocery=false)]
+2024-02-09T14:50:20.490+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.d.d.s.RetailStoreDiscountsService    : Net payable amount calculated: 855.0
+2024-02-09T14:50:20.497+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.d.d.s.RetailStoreDiscountsService    : Calculating net payable amount for user: User(userId=1, userType=CUSTOMER, registrationDate=2024-02-09), bill: [Bill(billId=1, totalAmount=1000.0, isGrocery=false)]
+2024-02-09T14:50:20.498+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.d.d.s.RetailStoreDiscountsService    : Net payable amount calculated: 950.0
+2024-02-09T14:50:20.505+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.d.d.s.RetailStoreDiscountsService    : Calculating net payable amount for user: User(userId=1, userType=CUSTOMER, registrationDate=2023-02-09), bill: [Bill(billId=1, totalAmount=100.0, isGrocery=true)]
+2024-02-09T14:50:20.507+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.d.d.s.RetailStoreDiscountsService    : Net payable amount calculated: 95.0
+2024-02-09T14:50:20.513+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.d.d.s.RetailStoreDiscountsService    : Calculating net payable amount for user: User(userId=1, userType=EMPLOYEE, registrationDate=2024-02-09), bill: [Bill(billId=1, totalAmount=1000.0, isGrocery=false)]
+2024-02-09T14:50:20.514+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.d.d.s.RetailStoreDiscountsService    : Net payable amount calculated: 665.0
+2024-02-09T14:50:20.520+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.d.d.s.RetailStoreDiscountsService    : Calculating net payable amount for user: User(userId=1, userType=CUSTOMER, registrationDate=2023-02-09), bill: [Bill(billId=1, totalAmount=500.0, isGrocery=false)]
+2024-02-09T14:50:20.521+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.d.d.s.RetailStoreDiscountsService    : Net payable amount calculated: 475.0
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

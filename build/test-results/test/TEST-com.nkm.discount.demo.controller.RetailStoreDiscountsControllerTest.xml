@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.nkm.discount.demo.controller.RetailStoreDiscountsControllerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-02-09T09:20:19" hostname="IN-86RM2J3" time="1.091">
+  <properties/>
+  <testcase name="testCalculateNetPayableAmount()" classname="com.nkm.discount.demo.controller.RetailStoreDiscountsControllerTest" time="0.831"/>
+  <testcase name="testCalculateNetPayableAmount_checkException_amountZero()" classname="com.nkm.discount.demo.controller.RetailStoreDiscountsControllerTest" time="0.239"/>
+  <testcase name="testCalculateNetPayableAmount_check_userNotExist()" classname="com.nkm.discount.demo.controller.RetailStoreDiscountsControllerTest" time="0.015"/>
+  <system-out><![CDATA[2024-02-09T14:50:17.985+05:30  INFO 376 --- [retail_discount] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.nkm.discount.demo.controller.RetailStoreDiscountsControllerTest]: RetailStoreDiscountsControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-02-09T14:50:18.035+05:30  INFO 376 --- [retail_discount] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.nkm.discount.demo.DemoApplication for test class com.nkm.discount.demo.controller.RetailStoreDiscountsControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.2)
+
+2024-02-09T14:50:18.088+05:30  INFO 376 --- [retail_discount] [    Test worker] d.d.c.RetailStoreDiscountsControllerTest : Starting RetailStoreDiscountsControllerTest using Java 17.0.9 with PID 376 (started by nitinkumar14 in C:\Users\nitinkumar14\OneDrive - Nagarro\Desktop\interview-preparation\aws-elasticsearch\referances\dubai_muncipal\demo (13)\demo)
+2024-02-09T14:50:18.088+05:30  INFO 376 --- [retail_discount] [    Test worker] d.d.c.RetailStoreDiscountsControllerTest : No active profile set, falling back to 1 default profile: "default"
+2024-02-09T14:50:18.951+05:30  INFO 376 --- [retail_discount] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-02-09T14:50:18.952+05:30  INFO 376 --- [retail_discount] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-02-09T14:50:18.960+05:30  INFO 376 --- [retail_discount] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2024-02-09T14:50:18.993+05:30  INFO 376 --- [retail_discount] [    Test worker] d.d.c.RetailStoreDiscountsControllerTest : Started RetailStoreDiscountsControllerTest in 0.951 seconds (process running for 15.17)
+2024-02-09T14:50:19.747+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.d.d.c.RetailStoreDiscountsController : Received request to calculate net payable amount
+2024-02-09T14:50:19.760+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.d.d.c.RetailStoreDiscountsController : Net payable amount calculated: 1615.0
+2024-02-09T14:50:19.857+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.d.d.c.RetailStoreDiscountsController : Received request to calculate net payable amount
+2024-02-09T14:50:20.100+05:30  INFO 376 --- [retail_discount] [    Test worker] c.n.d.d.c.RetailStoreDiscountsController : Received request to calculate net payable amount
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
