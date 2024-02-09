@@ -25,9 +25,10 @@ To run the Retail Store Discounts project locally, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/Nkm17000/retail_discount.git`
 2. Navigate to the project directory: `cd retail_discount`
-3. Build the project: `gradle clean build`
-4. Run the application: `gradle bootRun`
-5. open this in browser http://localhost:8080/swagger-ui/index.html
+3. checkout master branch in git that had final code : `checkout master`
+4. Build the project: `gradle clean build`
+5. Run the application: `gradle bootRun`
+6. open this in browser http://localhost:8080/swagger-ui/index.html
 
 
 ### If you wanted to run executable jar 
