@@ -13,6 +13,8 @@ build/
 .gradle/
 !gradle/wrapper/gradle-wrapper.jar
 
+bin/
+
 # Compiled files
 *.class
 *.jar
