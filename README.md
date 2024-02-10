@@ -107,7 +107,45 @@ Provide a JSON payload containing the user and bill details, and the application
 
 
 # high level UML Diagram
-![HLD](sampleOutputResults/hld.jpeg)
+```puml
+@startuml
+
+package "Model" {
+    class User {
+        - userId: int
+        - userType: UserType
+        - registrationDate: LocalDate
+    }
+
+        enum UserType {
+            EMPLOYEE(0.30)
+            AFFILIATE(0.10)
+            CUSTOMER(0.05)
+            DEFAULT(0.0)
+            - double discountPercentage
+        }
+
+    class Bill {
+        - billId: int
+        - totalAmount: double
+        - isGrocery: boolean
+    }
+
+    class CalculateNetPayableAmountRequest {
+        - user: User
+        - bills: List<Bill>
+    }
+}
+
+CalculateNetPayableAmountRequest --|> User
+CalculateNetPayableAmountRequest --|> Bill
+User --|> userType
+
+@enduml
+```
+
+![HLD](sampleOutputResults/HLD.png)
+
 1. The User class represents a user of the store with properties userType and registrationDate.
 2. The UserType enum represents the different types of users, each with a corresponding discount percentage.
 3. Each user type (EMPLOYEE, AFFILIATE, CUSTOMER) has its own discount percentage, which can be accessed using the getDiscountPercentage() method.
