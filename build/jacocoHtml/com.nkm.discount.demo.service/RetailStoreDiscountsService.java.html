@@ -14,43 +14,43 @@ import java.util.stream.Collectors;
 
 <span class="fc" id="L15">@Slf4j</span>
 @Service
-<span class="nc" id="L17">public class RetailStoreDiscountsService {</span>
+<span class="fc" id="L17">public class RetailStoreDiscountsService {</span>
     @Value(&quot;${discount.for100}&quot;)
     private double discountFor100;
 
     public double calculateNetPayableAmount(User user, List&lt;Bill&gt; bills) {
-<span class="nc" id="L22">        log.info(&quot;Calculating net payable amount for user: {}, bill: {}&quot;, user, bills);</span>
-<span class="nc" id="L23">        double payableAmount = bills</span>
-<span class="nc" id="L24">                .stream()</span>
-<span class="nc" id="L25">                .map(bill -&gt; getPayableAmount(user, bill))</span>
-<span class="nc" id="L26">                .collect(Collectors.summarizingDouble(Double::doubleValue))</span>
-<span class="nc" id="L27">                .getSum();</span>
-<span class="nc" id="L28">        double netPayableAmount = payableAmount - (int) (payableAmount / 100) * discountFor100;</span>
-<span class="nc" id="L29">        log.info(&quot;Net payable amount calculated: {}&quot;, netPayableAmount);</span>
-<span class="nc" id="L30">        return netPayableAmount;</span>
+<span class="fc" id="L22">        log.info(&quot;Calculating net payable amount for user: {}, bill: {}&quot;, user, bills);</span>
+<span class="fc" id="L23">        double payableAmount = bills</span>
+<span class="fc" id="L24">                .stream()</span>
+<span class="fc" id="L25">                .map(bill -&gt; getPayableAmount(user, bill))</span>
+<span class="fc" id="L26">                .collect(Collectors.summarizingDouble(Double::doubleValue))</span>
+<span class="fc" id="L27">                .getSum();</span>
+<span class="fc" id="L28">        double netPayableAmount = payableAmount - (int) (payableAmount / 100) * discountFor100;</span>
+<span class="fc" id="L29">        log.info(&quot;Net payable amount calculated: {}&quot;, netPayableAmount);</span>
+<span class="fc" id="L30">        return netPayableAmount;</span>
     }
 
     private double getPayableAmount(User user, Bill bill) {
-<span class="nc" id="L34">        double discount = calculateDiscount(user, bill);</span>
-<span class="nc" id="L35">        double totalDiscount = calculateTotalDiscount(bill.getTotalAmount(), discount);</span>
-<span class="nc" id="L36">        return bill.getTotalAmount() - totalDiscount;</span>
+<span class="fc" id="L34">        double discount = calculateDiscount(user, bill);</span>
+<span class="fc" id="L35">        double totalDiscount = calculateTotalDiscount(bill.getTotalAmount(), discount);</span>
+<span class="fc" id="L36">        return bill.getTotalAmount() - totalDiscount;</span>
     }
 
     private double calculateDiscount(User user, Bill bill) {
-<span class="nc" id="L40">        UserType userType = user.getUserType();</span>
-<span class="nc bnc" id="L41" title="All 6 branches missed.">        if (bill.isGrocery() || (userType == UserType.CUSTOMER &amp;&amp; !isCustomerOverTwoYears(user))) {</span>
-<span class="nc" id="L42">            return 0.0;</span>
+<span class="fc" id="L40">        UserType userType = user.getUserType();</span>
+<span class="fc bfc" id="L41" title="All 6 branches covered.">        if (bill.isGrocery() || (userType == UserType.CUSTOMER &amp;&amp; !isCustomerOverTwoYears(user))) {</span>
+<span class="fc" id="L42">            return 0.0;</span>
         }
-<span class="nc" id="L44">        return  user.getUserType().getDiscountPercentage();</span>
+<span class="fc" id="L44">        return  user.getUserType().getDiscountPercentage();</span>
     }
 
     private boolean isCustomerOverTwoYears(User user) {
-<span class="nc bnc" id="L48" title="All 2 branches missed.">        return user.getUserType() == UserType.CUSTOMER &amp;&amp;</span>
-<span class="nc bnc" id="L49" title="All 2 branches missed.">                user.getRegistrationDate().isBefore(LocalDate.now().minusYears(2));</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">        return user.getUserType() == UserType.CUSTOMER &amp;&amp;</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">                user.getRegistrationDate().isBefore(LocalDate.now().minusYears(2));</span>
     }
 
     private double calculateTotalDiscount(double totalAmount, double discountPercentage) {
-<span class="nc" id="L53">        return totalAmount * discountPercentage;</span>
+<span class="fc" id="L53">        return totalAmount * discountPercentage;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
