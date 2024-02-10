@@ -1,5 +1,14 @@
-HELP.md
-.gradle
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
