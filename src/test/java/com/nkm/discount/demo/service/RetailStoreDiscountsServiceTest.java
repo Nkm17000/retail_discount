@@ -28,8 +28,6 @@ class RetailStoreDiscountsServiceTest {
     @InjectMocks
     private RetailStoreDiscountsService retailStoreDiscountsService;
 
-    @MockBean
-    private DiscountConfig discountConfig;
 
     @BeforeEach
     void setUp() {
