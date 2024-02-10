@@ -10,37 +10,49 @@ target/
 
 # Gradle
 build/
+.gradle/
 !gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+# Compiled files
+*.class
+*.jar
+*.war
+*.ear
 
-### IntelliJ IDEA ###
-.idea
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Compiled Java bytecode
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# IDE-specific settings
+/.idea
 *.iws
 *.iml
 *.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Spring Boot specific
+application.properties
+/application.yml
+/target/
 
-### VS Code ###
-.vscode/
+# Compiled files
+target/
+
+# Log files
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
