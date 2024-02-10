@@ -1,6 +1,5 @@
 package com.nkm.discount.demo.controller;
 
-import com.nkm.discount.demo.config.DiscountConfig;
 import com.nkm.discount.demo.model.User;
 import com.nkm.discount.demo.service.RetailStoreDiscountsService;
 import org.junit.jupiter.api.Test;
@@ -27,13 +26,8 @@ class RetailStoreDiscountsControllerTest {
     @MockBean
     private RetailStoreDiscountsService retailStoreDiscountsService;
 
-    @MockBean
-    private DiscountConfig discountConfig;
-
     @Test
     void testCalculateNetPayableAmount() throws Exception {
-        discountConfig.discountConfig();
-
         when(retailStoreDiscountsService.calculateNetPayableAmount(any(User.class), any())).thenReturn(1615.0);
         String body = "{\"user\":{\"userId\":1,\"userType\":\"EMPLOYEE\",\"registrationDate\":\"2024-02-09\"}," +
                 "\"bill\":[{\"billId\":1,\"totalAmount\":1000,\"grocery\":true}]}";
@@ -46,7 +40,6 @@ class RetailStoreDiscountsControllerTest {
 
     @Test
     void testCalculateNetPayableAmount_check_userNotExist() throws Exception {
-        discountConfig.discountConfig();
         when(retailStoreDiscountsService.calculateNetPayableAmount(any(User.class), any())).thenReturn(1615.0);
         String body = "{\"user\":{\"userId\":0,\"userType\":\"EMPLOYEE\",\"registrationDate\":\"2024-02-09\"},\"bill\":[{\"billId\":1,\"totalAmount\":1000,\"grocery\":true}]}";
         mockMvc.perform(MockMvcRequestBuilders.post("/calculateNetPayableAmount")
@@ -58,7 +51,6 @@ class RetailStoreDiscountsControllerTest {
 
     @Test
     void testCalculateNetPayableAmount_checkException_amountZero() throws Exception {
-        discountConfig.discountConfig();
         when(retailStoreDiscountsService.calculateNetPayableAmount(any(User.class), any())).thenReturn(1615.0);
         String body = "{\"user\":{\"userId\":1,\"userType\":\"EMPLOYEE\",\"registrationDate\":\"2024-02-09\"},\"bill\":[{\"billId\":1,\"totalAmount\":0,\"grocery\":true}]}";
         mockMvc.perform(MockMvcRequestBuilders.post("/calculateNetPayableAmount")
