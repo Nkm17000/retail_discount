@@ -1,6 +1,5 @@
 package com.nkm.discount.demo.service;
 
-import com.nkm.discount.demo.config.DiscountConfig;
 import com.nkm.discount.demo.model.Bill;
 import com.nkm.discount.demo.model.User;
 import com.nkm.discount.demo.model.UserType;
@@ -9,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.core.env.Environment;
 import org.springframework.test.util.ReflectionTestUtils;
 
