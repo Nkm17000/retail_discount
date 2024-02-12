@@ -1,0 +1,67 @@
+openapi: 3.0.0
+info:
+  title: Retail Store Discounts API
+  version: 1.0.0
+paths:
+  /calculateNetPayableAmount:
+    post:
+      summary: Calculate Net Payable Amount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculateNetPayableAmountRequest'
+      parameters:
+        - in: header
+          name: X-API-KEY
+          required: true
+          schema:
+            type: string
+          description: API key for authorization
+          example: your-api-key-here
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: number
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    CalculateNetPayableAmountRequest:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        bill:
+          type: array
+          items:
+            $ref: '#/components/schemas/Bill'
+    Bill:
+      type: object
+      properties:
+        billId:
+          type: integer
+          format: int32
+        totalAmount:
+          type: number
+          format: double
+        isGrocery:
+          type: boolean
+    User:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int32
+        userType:
+          type: string
+          enum: [EMPLOYEE, AFFILIATE, CUSTOMER]
+        registrationDate:
+          type: string
+          format: date
