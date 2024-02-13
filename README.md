@@ -133,32 +133,16 @@ class Bill {
     - boolean isGrocery
 }
 
-interface DiscountStrategy {
-    + calculateDiscount(User, Bill): double
-}
-
-class EmployeeDiscountStrategy {
-    + calculateDiscount(User, Bill): double
-}
-
-class AffiliateDiscountStrategy {
-    + calculateDiscount(User, Bill): double
-}
-
-class CustomerDiscountStrategy {
-    + calculateDiscount(User, Bill): double
-}
-
 interface RetailStoreDiscountInterface {
     + calculateNetPayableAmount(User, List<Bill>): double
 }
 
 class RetailStoreDiscountsService {
     - double discountFor100
-    - DiscountStrategy discountStrategy
     + calculateNetPayableAmount(User, List<Bill>): double
-    + setDiscountStrategy(DiscountStrategy): void
     - getPayableAmount(User, Bill): double
+    - calculateDiscount(User, Bill): double
+    - isCustomerOverTwoYears(User): boolean
     - calculateTotalDiscount(double, double): double
 }
 
@@ -167,12 +151,9 @@ CalculateNetPayableAmountRequest --> Bill
 RetailStoreDiscountsService --> RetailStoreDiscountInterface
 RetailStoreDiscountsService --> User
 RetailStoreDiscountsService --> Bill
-RetailStoreDiscountsService --> DiscountStrategy
-EmployeeDiscountStrategy --> DiscountStrategy
-AffiliateDiscountStrategy --> DiscountStrategy
-CustomerDiscountStrategy --> DiscountStrategy
 
 @enduml
+
 
 ```
 
