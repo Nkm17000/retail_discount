@@ -110,41 +110,73 @@ Provide a JSON payload containing the user and bill details, and the application
 ```puml
 @startuml
 
-package "Model" {
-    class User {
-        - userId: int
-        - userType: UserType
-        - registrationDate: LocalDate
-    }
-
-        enum UserType {
-            EMPLOYEE(0.30)
-            AFFILIATE(0.10)
-            CUSTOMER(0.05)
-            DEFAULT(0.0)
-            - double discountPercentage
-        }
-
-    class Bill {
-        - billId: int
-        - totalAmount: double
-        - isGrocery: boolean
-    }
-
-    class CalculateNetPayableAmountRequest {
-        - user: User
-        - bills: List<Bill>
-    }
+class CalculateNetPayableAmountRequest {
+    - User user
+    - List<Bill> bills
 }
 
-CalculateNetPayableAmountRequest --|> User
-CalculateNetPayableAmountRequest --|> Bill
-User --|> userType
+class User {
+    - int userId
+    - UserType userType
+    - LocalDate registrationDate
+}
+
+enum UserType {
+    EMPLOYEE
+    AFFILIATE
+    CUSTOMER
+}
+
+class Bill {
+    - int billId
+    - double totalAmount
+    - boolean isGrocery
+}
+
+interface DiscountStrategy {
+    + calculateDiscount(User, Bill): double
+}
+
+class EmployeeDiscountStrategy {
+    + calculateDiscount(User, Bill): double
+}
+
+class AffiliateDiscountStrategy {
+    + calculateDiscount(User, Bill): double
+}
+
+class CustomerDiscountStrategy {
+    + calculateDiscount(User, Bill): double
+}
+
+interface RetailStoreDiscountInterface {
+    + calculateNetPayableAmount(User, List<Bill>): double
+}
+
+class RetailStoreDiscountsService {
+    - double discountFor100
+    - DiscountStrategy discountStrategy
+    + calculateNetPayableAmount(User, List<Bill>): double
+    + setDiscountStrategy(DiscountStrategy): void
+    - getPayableAmount(User, Bill): double
+    - calculateTotalDiscount(double, double): double
+}
+
+CalculateNetPayableAmountRequest --> User
+CalculateNetPayableAmountRequest --> Bill
+RetailStoreDiscountsService --> RetailStoreDiscountInterface
+RetailStoreDiscountsService --> User
+RetailStoreDiscountsService --> Bill
+RetailStoreDiscountsService --> DiscountStrategy
+EmployeeDiscountStrategy --> DiscountStrategy
+AffiliateDiscountStrategy --> DiscountStrategy
+CustomerDiscountStrategy --> DiscountStrategy
 
 @enduml
+
 ```
 
-![HLD](sampleOutputResults/HLD.png)
+![HLD](sampleOutputResults/img.png)
 
 1. The User class represents a user of the store with properties userType and registrationDate.
 2. The UserType enum represents the different types of users, each with a corresponding discount percentage.
