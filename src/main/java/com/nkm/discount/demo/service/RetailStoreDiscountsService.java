@@ -1,5 +1,6 @@
 package com.nkm.discount.demo.service;
 
+import com.nkm.discount.demo.interfaces.RetailStoreDiscountInterface;
 import com.nkm.discount.demo.model.Bill;
 import com.nkm.discount.demo.model.User;
 import com.nkm.discount.demo.model.UserType;
@@ -14,10 +15,11 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
-public class RetailStoreDiscountsService {
+public class RetailStoreDiscountsService implements RetailStoreDiscountInterface {
     @Value("${discount.for100}")
     private double discountFor100;
 
+    @Override
     public double calculateNetPayableAmount(User user, List<Bill> bills) {
         log.info("Calculating net payable amount for user: {}, bill: {}", user, bills);
         double payableAmount = bills
