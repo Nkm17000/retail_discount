@@ -183,7 +183,7 @@ RetailStoreDiscountsService -[hidden]right-> UserTypeDiscountFactory: calculateD
 
 ```
 
-![HLD](sampleOutputResults/HLD.png)
+![HLD](sampleOutputResults/HLD_NEW.png)
 
 1. The User class represents a user of the store with properties userType and registrationDate.
 2. The UserType enum represents the different types of users, each with a corresponding discount percentage.
