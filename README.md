@@ -110,38 +110,77 @@ Provide a JSON payload containing the user and bill details, and the application
 ```puml
 @startuml
 
-package "Model" {
-    class User {
-        - userId: int
-        - userType: UserType
-        - registrationDate: LocalDate
-    }
-
-        enum UserType {
-            EMPLOYEE(0.30)
-            AFFILIATE(0.10)
-            CUSTOMER(0.05)
-            DEFAULT(0.0)
-            - double discountPercentage
-        }
-
-    class Bill {
-        - billId: int
-        - totalAmount: double
-        - isGrocery: boolean
-    }
-
-    class CalculateNetPayableAmountRequest {
-        - user: User
-        - bills: List<Bill>
-    }
+interface RetailStoreDiscountInterface {
+    {abstract} +calculateNetPayableAmount(user: User, bills: List<Bill>): double
 }
 
-CalculateNetPayableAmountRequest --|> User
-CalculateNetPayableAmountRequest --|> Bill
-User --|> userType
+interface UserTypeDiscount {
+    {abstract} +getDiscount(user: User): double
+}
+
+class RetailStoreDiscountsController {
+    # retailStoreDiscountInterface: RetailStoreDiscountInterface [1]
+    + calculateNetPayableAmount(request: CalculateNetPayableAmountRequest): ResponseEntity<Double>
+}
+
+class RetailStoreDiscountsService {
+    - discountFor100: double [1]
+    - calculateDiscount(user: User, bill: Bill): double
+    + calculateNetPayableAmount(user: User, bills: List<Bill>): double
+    - calculateTotalDiscount(totalAmount: double, discountPercentage: double): double
+    - getPayableAmount(user: User, bill: Bill): double
+}
+
+class UserTypeDiscountFactory {
+    + getUserTypeDiscount(userType: UserType): UserTypeDiscount
+}
+
+class Affiliate {
+    + getDiscount(user: User)
+}
+
+class Customer {
+    + getDiscount(user: User)
+    - isCustomerOverTwoYears(user: User): boolean
+}
+
+class Employee {
+    + getDiscount(user: User)
+}
+
+class User {
+    - userId: int
+    - userType: UserType
+    - registrationDate: LocalDate
+}
+
+class Bill {
+    - billId: int
+    - totalAmount: double
+    - isGrocery: boolean
+    + getBillId(): int
+}
+
+class CalculateNetPayableAmountRequest {
+    - user: User
+    - bill: List<Bill>
+}
+
+enum UserType {
+    EMPLOYEE
+    AFFILIATE
+    CUSTOMER
+}
+
+RetailStoreDiscountInterface --|> RetailStoreDiscountsService
+RetailStoreDiscountsController -[hidden]right-> RetailStoreDiscountInterface
+RetailStoreDiscountsService -- Affiliate
+RetailStoreDiscountsService -- Customer
+RetailStoreDiscountsService -- Employee
+RetailStoreDiscountsService -[hidden]right-> UserTypeDiscountFactory: calculateDiscount() -> getUserTypeDiscount()
 
 @enduml
+
 ```
 
 ![HLD](sampleOutputResults/HLD.png)
