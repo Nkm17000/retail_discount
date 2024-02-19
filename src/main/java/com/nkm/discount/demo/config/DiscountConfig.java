@@ -1,12 +1,15 @@
 package com.nkm.discount.demo.config;
 
-import com.nkm.discount.demo.model.UserType;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+import java.util.HashMap;
+import java.util.Map;
+
+@Configuration
 public class DiscountConfig {
-
+    private static Map<String, Double> discountRates = new HashMap<>();
     @Value("${discount.employee}")
     private double employeeDiscount;
 
@@ -16,10 +19,36 @@ public class DiscountConfig {
     @Value("${discount.customer}")
     private double customerDiscount;
 
-    public void discountConfig() {
-        UserType.EMPLOYEE.setDiscountPercentage(employeeDiscount);
-        UserType.AFFILIATE.setDiscountPercentage(affiliateDiscount);
-        UserType.CUSTOMER.setDiscountPercentage(customerDiscount);
+    public double getEmployeeDiscount() {
+        return employeeDiscount;
+    }
+
+    public double getAffiliateDiscount() {
+        return affiliateDiscount;
+    }
+
+    public double getCustomerDiscount() {
+        return customerDiscount;
+    }
+
+
+    @PostConstruct
+    public void init() {
+        discountRates.put("employee", employeeDiscount);
+        discountRates.put("affiliate", affiliateDiscount);
+        discountRates.put("customer", customerDiscount);
+    }
+
+    public static double getEmployeeDiscountRate() {
+        return discountRates.get("employee");
+    }
+
+    public static double getAffiliateDiscountRate() {
+        return discountRates.get("affiliate");
+    }
+
+    public static double getLongTermCustomerDiscountRate() {
+        return discountRates.get("customer");
     }
 }
 

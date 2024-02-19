@@ -38,7 +38,7 @@ class RetailStoreDiscountsControllerTest {
 
     @Test
     void testCalculateNetPayableAmount() throws Exception {
-        discountConfig.discountConfig();
+
 
         when(retailStoreDiscountsService.calculateNetPayableAmount(any(User.class), any())).thenReturn(1615.0);
         String body = "{\"user\":{\"userId\":1,\"userType\":\"EMPLOYEE\",\"registrationDate\":\"2024-02-09\"}," +
@@ -53,7 +53,7 @@ class RetailStoreDiscountsControllerTest {
 
     @Test
     void testCalculateNetPayableAmount_check_userNotExist() throws Exception {
-        discountConfig.discountConfig();
+
         when(retailStoreDiscountsService.calculateNetPayableAmount(any(User.class), any())).thenReturn(1615.0);
         String body = "{\"user\":{\"userId\":0,\"userType\":\"EMPLOYEE\",\"registrationDate\":\"2024-02-09\"},\"bill\":[{\"billId\":1,\"totalAmount\":1000,\"grocery\":true}]}";
         mockMvc.perform(MockMvcRequestBuilders.post("/calculateNetPayableAmount")
@@ -66,7 +66,6 @@ class RetailStoreDiscountsControllerTest {
 
     @Test
     void testCalculateNetPayableAmount_checkException_amountZero() throws Exception {
-        discountConfig.discountConfig();
         when(retailStoreDiscountsService.calculateNetPayableAmount(any(User.class), any())).thenReturn(1615.0);
         String body = "{\"user\":{\"userId\":1,\"userType\":\"EMPLOYEE\",\"registrationDate\":\"2024-02-09\"},\"bill\":[{\"billId\":1,\"totalAmount\":0,\"grocery\":true}]}";
         mockMvc.perform(MockMvcRequestBuilders.post("/calculateNetPayableAmount")
@@ -81,7 +80,6 @@ class RetailStoreDiscountsControllerTest {
     @Test
     @WithMockUser
     void testCalculateNetPayableAmount_WrongAPI() throws Exception {
-        discountConfig.discountConfig();
 
         when(retailStoreDiscountsService.calculateNetPayableAmount(any(User.class), any())).thenReturn(1615.0);
         String body = "{\"user\":{\"userId\":1,\"userType\":\"EMPLOYEE\",\"registrationDate\":\"2024-02-09\"}," +

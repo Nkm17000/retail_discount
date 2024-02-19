@@ -32,9 +32,7 @@ class RetailStoreDiscountsServiceTest {
         MockitoAnnotations.initMocks(this);
         when(environment.getProperty("discount.for100")).thenReturn("5");
         ReflectionTestUtils.setField(retailStoreDiscountsService, "discountFor100", 5.0);
-        UserType.EMPLOYEE.setDiscountPercentage(.3);
-        UserType.AFFILIATE.setDiscountPercentage(.1);
-        UserType.CUSTOMER.setDiscountPercentage(.05);
+
     }
 
     @Test

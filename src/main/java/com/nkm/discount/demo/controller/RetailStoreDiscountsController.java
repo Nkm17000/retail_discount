@@ -2,7 +2,7 @@ package com.nkm.discount.demo.controller;
 
 import com.nkm.discount.demo.error.InvalidRequestException;
 import com.nkm.discount.demo.model.CalculateNetPayableAmountRequest;
-import com.nkm.discount.demo.service.RetailStoreDiscountsService;
+import com.nkm.discount.demo.retailstoreinterface.RetailStoreDiscountInterface;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class RetailStoreDiscountsController {
 
     @Autowired
-    RetailStoreDiscountsService retailStoreDiscountsService;
+    RetailStoreDiscountInterface retailStoreDiscountInterface;
 
     /*RetailStoreDiscountsController(RetailStoreDiscountsService retailStoreDiscountsService) {
         this.retailStoreDiscountsService = retailStoreDiscountsService;
@@ -37,7 +37,7 @@ public class RetailStoreDiscountsController {
         if (request.getBill().stream().filter(it -> it.getTotalAmount() == 0).collect(Collectors.toList()).size() > 0) {
             throw new InvalidRequestException("Bill Amount can't be zero ");
         }
-        double netPayableAmount = retailStoreDiscountsService.calculateNetPayableAmount(request.getUser(), request.getBill());
+        double netPayableAmount = retailStoreDiscountInterface.calculateNetPayableAmount(request.getUser(), request.getBill());
         log.info("Net payable amount calculated: {}", netPayableAmount);
         return new ResponseEntity(netPayableAmount, HttpStatus.OK);
     }
